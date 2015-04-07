@@ -23,14 +23,12 @@ func BubbleSort(arr Sortable) {
 	}
 
 	swapped := true
-	j := 0
 
 	for swapped == true {
 		swapped = false
-		j++
 
-		for i := 0; i < arrLen-j; i++ {
-			if !arr.Less(i, i+1) {
+		for i := 0; i < arrLen-1; i++ {
+			if arr.Greater(i, i+1) {
 				arr.Swap(i, i+1)
 				swapped = true
 			}
