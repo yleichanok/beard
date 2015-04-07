@@ -1,7 +1,7 @@
 package sort
 
 /**
- * Quick sort algorithm.
+ * Quick (partition-exchange) sort algorithm.
  *
  * Picks an element from the array (the pivot),
  * partition the remaining elements into those greater than and less than this pivot,

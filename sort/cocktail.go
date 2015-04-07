@@ -1,7 +1,7 @@
 package sort
 
 /**
- * Cocktail sort algorithm (or bidirectional bubble sort).
+ * Cocktail (bidirectional bubble, shaker) sort algorithm.
  *
  * A variant of bubble sort that compares each adjacent pair of items
  * in a list in turn, swapping them if necessary, and alternately passes

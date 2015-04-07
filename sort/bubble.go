@@ -1,7 +1,7 @@
 package sort
 
 /**
- * Bubble sort algorithm.
+ * Bubble (sinking) sort algorithm.
  *
  * Sorts by comparing each adjacent pair of items in a list in turn,
  * swapping the items if necessary, and repeating the pass through the list
