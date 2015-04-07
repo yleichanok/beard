@@ -1,14 +1,11 @@
 package sort
 
-/**
- * Insertion sort algotithm.
- *
- * Sorts by repeatedly taking the next item and inserting it
- * into the final data structure in its proper order with respect to items
- * already inserted.
- *
- * See http://en.wikipedia.org/wiki/Insertion_sort.
- */
+// Insertion sort algotithm.
+//
+// Sorts by repeatedly taking the next item and inserting it into the final data structure
+// in its proper order with respect to items already inserted.
+//
+// See http://en.wikipedia.org/wiki/Insertion_sort.
 func InsertionSort(arr Sortable) {
 
 	if arr == nil {

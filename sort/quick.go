@@ -1,14 +1,12 @@
 package sort
 
-/**
- * Quick (partition-exchange) sort algorithm.
- *
- * Picks an element from the array (the pivot),
- * partition the remaining elements into those greater than and less than this pivot,
- * and recursively sorts the partitions.
- *
- * See http://en.wikipedia.org/wiki/Quicksort.
- */
+// Quick (partition-exchange) sort algorithm.
+//
+// Picks an element from the array (the pivot),
+// partitions the remaining elements into those greater than and less than this pivot,
+// and recursively sorts the partitions.
+//
+// See http://en.wikipedia.org/wiki/Quicksort.
 func QuickSort(arr Sortable) {
 	if arr == nil {
 		panic("arr is nil")

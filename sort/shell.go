@@ -1,15 +1,13 @@
 package sort
 
-/**
- * Shell sorting algorithm.
- *
- * The first diminishing increment sort.
- * On each pass i sets of n/i items are sorted, typically with insertion sort.
- * On each succeeding pass, i is reduced until it is 1 for the last pass.
- * A good series of i values is important to efficiency.
- *
- * See http://en.wikipedia.org/wiki/Shellsort.
- */
+// Shell sorting algorithm.
+//
+// The first diminishing increment sort.
+// On each pass i sets of n/i items are sorted, typically with insertion sort.
+// On each succeeding pass, i is reduced until it is 1 for the last pass.
+// A good series of i values is important to efficiency.
+//
+// See http://en.wikipedia.org/wiki/Shellsort.
 func ShellSort(arr Sortable) {
 
 	if arr == nil {
