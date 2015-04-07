@@ -72,6 +72,23 @@ func TestCocktailSort(t *testing.T) {
 	return
 }
 
+func TestOddEvenSort(t *testing.T) {
+	arr := []int{
+		2, 5, 8, 1, 9, 3, 6, 9, 1, 3, 9, 4, 7, 1, 0, 5, -1, -3, 1, -5,
+	}
+	arrSorted := []int{
+		-5, -3, -1, 0, 1, 1, 1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 9, 9,
+	}
+
+	OddEvenSort(ByIntValue(arr))
+	if reflect.DeepEqual(arr, arrSorted) == false {
+		t.Error("Bubble sort failed for %v", arr)
+		return
+	}
+
+	return
+}
+
 func TestQuickSort(t *testing.T) {
 	arr := []int{
 		2, 5, 8, 1, 9, 3, 6, 9, 1, 3, 9, 4, 7, 1, 0, 5, -1, -3, 1, -5,
@@ -179,6 +196,19 @@ func BenchmarkCocktailSort(b *testing.B) {
 		b.StartTimer()
 
 		CocktailSort(ByIntValue(list))
+	}
+	return
+}
+
+func BenchmarkOddEvenSort(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		b.StopTimer()
+		for i := range list {
+			list[i] = prng.Int()
+		}
+		b.StartTimer()
+
+		OddEvenSort(ByIntValue(list))
 	}
 	return
 }
