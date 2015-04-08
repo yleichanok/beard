@@ -13,7 +13,7 @@ import (
 // ----------------------------------------------------------------------------
 
 // Total amount of elements in a test array.
-const SIZE int = 10000
+const SIZE int = 100
 
 var list = make([]int, SIZE)
 var prng = rand.New(rand.NewSource(int64(time.Now().Nanosecond())))
@@ -132,6 +132,23 @@ func TestGnomeSort(t *testing.T) {
 	}
 
 	GnomeSort(ByIntValue(arr))
+	if reflect.DeepEqual(arr, arrSorted) == false {
+		t.Error("Quick sort failed for %v", arr)
+		return
+	}
+
+	return
+}
+
+func TestStoogeSort(t *testing.T) {
+	arr := []int{
+		2, 5, 8, 1, 9, 3, 6, 9, 1, 3, 9, 4, 7, 1, 0, 5, -1, -3, 1, -5,
+	}
+	arrSorted := []int{
+		-5, -3, -1, 0, 1, 1, 1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 9, 9,
+	}
+
+	StoogeSort(ByIntValue(arr))
 	if reflect.DeepEqual(arr, arrSorted) == false {
 		t.Error("Quick sort failed for %v", arr)
 		return
@@ -282,6 +299,19 @@ func BenchmarkGnomeSort(b *testing.B) {
 		b.StartTimer()
 
 		GnomeSort(ByIntValue(list))
+	}
+	return
+}
+
+func BenchmarkStoogeSort(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		b.StopTimer()
+		for i := range list {
+			list[i] = prng.Int()
+		}
+		b.StartTimer()
+
+		StoogeSort(ByIntValue(list))
 	}
 	return
 }
