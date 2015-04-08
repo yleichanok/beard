@@ -13,7 +13,7 @@ import (
 // ----------------------------------------------------------------------------
 
 // Total amount of elements in a test array.
-const SIZE int = 100
+const SIZE int = 100000
 
 var list = make([]int, SIZE)
 var prng = rand.New(rand.NewSource(int64(time.Now().Nanosecond())))
@@ -299,19 +299,6 @@ func BenchmarkGnomeSort(b *testing.B) {
 		b.StartTimer()
 
 		GnomeSort(ByIntValue(list))
-	}
-	return
-}
-
-func BenchmarkStoogeSort(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		b.StopTimer()
-		for i := range list {
-			list[i] = prng.Int()
-		}
-		b.StartTimer()
-
-		StoogeSort(ByIntValue(list))
 	}
 	return
 }
