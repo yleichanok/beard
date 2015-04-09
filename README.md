@@ -18,14 +18,15 @@ Results for an array of 100,000 integer elements:
 
 | Name              | Iterations |           ns/op |
 | :---------------- | ---------: | --------------: |
-| Quick sort        |        100 |        23158016 |
-| Go native sort    |        100 |        26214720 |
-| Comb sort         |         50 |        38533825 |
-| Shell sort        |         20 |        81318971 |
-| Insertion sort    |          1 |     25602297311 |
-| Selection sort    |          1 |     27555065033 |
-| Gnome sort        |          1 |     39905122346 |
-| Odd-even sort     |          1 |     49141880163 |
-| Cocktail sort     |          1 |     50132621173 |
-| Bubble sort       |          1 |     83721916771 |
+| Quick sort        |        100 |        23392532 |
+| Go native sort    |        100 |        27036809 |
+| Heap sort         |         50 |        38473021 |
+| Comb sort         |         50 |        39060081 |
+| Shell sort        |         20 |        97606027 |
+| Insertion sort    |          1 |     26890184579 |
+| Selection sort    |          1 |     29874953237 |
+| Gnome sort        |          1 |     40047292762 |
+| Odd-even sort     |          1 |     48786066289 |
+| Cocktail sort     |          1 |     49116488340 |
+| Bubble sort       |          1 |     82878359824 |
 | Stooge sort       |          - |               - |
