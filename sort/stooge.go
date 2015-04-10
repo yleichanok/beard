@@ -24,7 +24,7 @@ func StoogeSort(arr Sortable) {
 }
 
 func stoogeSort(arr Sortable, i, j int) {
-	if arr.Greater(i, j) {
+	if arr.Compare(i, j) == 1 {
 		arr.Swap(i, j)
 	}
 

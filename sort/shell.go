@@ -27,7 +27,7 @@ func ShellSort(arr Sortable) {
 		gap := gaps[k]
 		for i := gap; i < arrLen; i++ {
 			j := i - gap
-			for j >= 0 && arr.Greater(j, j+gap) {
+			for j >= 0 && arr.Compare(j, j+gap) == 1 {
 				arr.Swap(j, j+gap)
 				j -= gap
 			}

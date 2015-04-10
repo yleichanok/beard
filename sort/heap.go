@@ -1,7 +1,6 @@
 package sort
 
 import "math"
-import "fmt"
 
 // Heap sort algorithm.
 //
@@ -21,9 +20,7 @@ func HeapSort(arr Sortable) {
 		return
 	}
 
-	fmt.Println(arr)
 	heapify(arr, arrLen)
-	fmt.Println(arr)
 
 	end := arrLen - 1
 
@@ -56,10 +53,10 @@ func siftDown(arr Sortable, start, end int) {
 		child := root*2 + 1
 		swap := root
 
-		if arr.Less(swap, child) {
+		if arr.Compare(swap, child) == -1 {
 			swap = child
 		}
-		if child+1 <= end && arr.Less(swap, child+1) {
+		if child+1 <= end && arr.Compare(swap, child+1) == -1 {
 			swap = child + 1
 		}
 

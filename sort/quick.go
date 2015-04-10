@@ -29,10 +29,10 @@ func quickSort(arr Sortable, left, right int) {
 	pivotIndex := (left + right) / 2
 
 	for i <= j {
-		for arr.Less(i, pivotIndex) {
+		for arr.Compare(i, pivotIndex) == -1 {
 			i++
 		}
-		for arr.Greater(j, pivotIndex) {
+		for arr.Compare(j, pivotIndex) == 1 {
 			j--
 		}
 		if i <= j {

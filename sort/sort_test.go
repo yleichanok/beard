@@ -24,11 +24,14 @@ type ByIntValue []int
 func (arr ByIntValue) Len() int {
 	return len(arr)
 }
-func (arr ByIntValue) Less(i, j int) bool {
-	return arr[i] < arr[j]
-}
-func (arr ByIntValue) Greater(i, j int) bool {
-	return arr[i] > arr[j]
+func (arr ByIntValue) Compare(i, j int) int8 {
+	if arr[i] < arr[j] {
+		return -1
+	}
+	if arr[i] > arr[j] {
+		return 1
+	}
+	return 0
 }
 func (arr ByIntValue) Swap(i, j int) {
 	arr[i], arr[j] = arr[j], arr[i]

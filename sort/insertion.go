@@ -21,7 +21,7 @@ func InsertionSort(arr Sortable) {
 
 	for i := 1; i < arrLen; i++ {
 		j := i
-		for j > 0 && arr.Greater(j-1, j) {
+		for j > 0 && arr.Compare(j-1, j) == 1 {
 			arr.Swap(j-1, j)
 			j--
 		}

@@ -34,7 +34,7 @@ func CombSort(arr Sortable) {
 		}
 
 		for i := 0; i+gap < arrLen; i++ {
-			if arr.Greater(i, i+gap) {
+			if arr.Compare(i, i+gap) == 1 {
 				arr.Swap(i, i+gap)
 				swapped = true
 			}

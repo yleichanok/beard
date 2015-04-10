@@ -26,7 +26,7 @@ func BubbleSort(arr Sortable) {
 		swapped = false
 
 		for i := 0; i < arrLen-1; i++ {
-			if arr.Greater(i, i+1) {
+			if arr.Compare(i, i+1) == 1 {
 				arr.Swap(i, i+1)
 				swapped = true
 			}

@@ -28,13 +28,13 @@ func OddEvenSort(arr Sortable) {
 		swapped = false
 
 		for i := 1; i < arrLen-1; i += 2 {
-			if arr.Greater(i, i+1) {
+			if arr.Compare(i, i+1) == 1 {
 				arr.Swap(i, i+1)
 				swapped = true
 			}
 		}
 		for i := 0; i < arrLen-1; i += 2 {
-			if arr.Greater(i, i+1) {
+			if arr.Compare(i, i+1) == 1 {
 				arr.Swap(i, i+1)
 				swapped = true
 			}

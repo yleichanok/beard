@@ -22,7 +22,7 @@ func GnomeSort(arr Sortable) {
 	}
 
 	for i := 1; i < arrLen; {
-		if !arr.Less(i, i-1) {
+		if arr.Compare(i, i-1) >= 0 {
 			i++
 		} else {
 			arr.Swap(i, i-1)

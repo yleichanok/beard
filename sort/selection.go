@@ -22,7 +22,7 @@ func SelectionSort(arr Sortable) {
 	for i := 0; i < arrLen-1; i++ {
 		min := i
 		for j := i + 1; j < arrLen; j++ {
-			if arr.Less(j, min) {
+			if arr.Compare(j, min) == -1 {
 				min = j
 			}
 		}
