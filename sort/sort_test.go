@@ -119,9 +119,7 @@ func TestMergeSort(t *testing.T) {
 
 	tmp := make([]int, len(arr))
 
-	MergeSort(ByIntValue(arr), ByIntValue(tmp), func(from, to Sortable, fromIndex, toIndex int) {
-		to.(ByIntValue)[toIndex] = from.(ByIntValue)[fromIndex]
-	})
+	MergeSort(ByIntValue(arr), ByIntValue(tmp), copy)
 	if reflect.DeepEqual(arr, arrSorted) == false {
 		t.Error("Quick sort failed for %v", arr)
 		return
@@ -327,9 +325,7 @@ func BenchmarkMergeSort(b *testing.B) {
 		b.StartTimer()
 
 		tmp := make([]int, len(list))
-		MergeSort(ByIntValue(list), ByIntValue(tmp), func(from, to Sortable, fromIndex, toIndex int) {
-			to.(ByIntValue)[toIndex] = from.(ByIntValue)[fromIndex]
-		})
+		MergeSort(ByIntValue(list), ByIntValue(tmp), copy)
 	}
 	return
 }

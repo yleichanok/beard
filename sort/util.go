@@ -15,3 +15,8 @@ type Sortable interface {
 	// Swaps arr[i] and arr[j] with each other.
 	Swap(i, j int)
 }
+
+// Copies the value from one array to another.
+func copy(from, to Sortable, fromIndex, toIndex int) {
+	to.(ByIntValue)[toIndex] = from.(ByIntValue)[fromIndex]
+}
