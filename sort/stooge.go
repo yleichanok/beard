@@ -2,7 +2,7 @@ package sort
 
 // Stooge sort algorithm.
 //
-// Swaps the top and bottom items if needed, then (recursively) sortsthe bottom two-thirds,
+// Swaps the top and bottom items if needed, then (recursively) sorts the bottom two-thirds,
 // then the top two-thirds, then the bottom two-thirds again.
 //
 // See http://en.wikipedia.org/wiki/Stooge_sort.
