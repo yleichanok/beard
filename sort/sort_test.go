@@ -13,7 +13,7 @@ import (
 // ----------------------------------------------------------------------------
 
 // Total amount of elements in a test array.
-const SIZE int = 100000
+const SIZE int = 10000
 
 var list = make([]int, SIZE)
 var prng = rand.New(rand.NewSource(int64(time.Now().Nanosecond())))
@@ -35,6 +35,37 @@ func (arr ByIntValue) Compare(i, j int) int8 {
 }
 func (arr ByIntValue) Swap(i, j int) {
 	arr[i], arr[j] = arr[j], arr[i]
+}
+
+// Copies the value from one array to another.
+// For merge sort only.
+func copy(from, to Sortable, fromIndex, toIndex int) {
+	to.(ByIntValue)[toIndex] = from.(ByIntValue)[fromIndex]
+}
+
+// Returns a value by index.
+// For cycle sort only.
+func get(arr Sortable, index int) interface{} {
+	return arr.(ByIntValue)[index]
+}
+
+// Compares an element of array with item.
+// For cycle sort only.
+func compare(arr Sortable, index int, item interface{}) int8 {
+	if arr.(ByIntValue)[index] < item.(int) {
+		return -1
+	}
+	if arr.(ByIntValue)[index] > item.(int) {
+		return 1
+	}
+	return 0
+}
+
+// Swaps an element of array and item.
+// For cycle sort only.
+func swap(arr Sortable, index int, item interface{}) interface{} {
+	arr.(ByIntValue)[index], item = item.(int), arr.(ByIntValue)[index]
+	return item
 }
 
 // ----------------------------------------------------------------------------
@@ -171,6 +202,23 @@ func TestGnomeSort(t *testing.T) {
 	}
 
 	GnomeSort(ByIntValue(arr))
+	if reflect.DeepEqual(arr, arrSorted) == false {
+		t.Error("Quick sort failed for %v", arr)
+		return
+	}
+
+	return
+}
+
+func TestCycleSort(t *testing.T) {
+	arr := []int{
+		2, 5, 8, 1, 9, 3, 6, 9, 1, 3, 9, 4, 7, 1, 0, 5, -1, -3, 1, -5,
+	}
+	arrSorted := []int{
+		-5, -3, -1, 0, 1, 1, 1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 9, 9,
+	}
+
+	CycleSort(ByIntValue(arr), get, compare, swap)
 	if reflect.DeepEqual(arr, arrSorted) == false {
 		t.Error("Quick sort failed for %v", arr)
 		return
@@ -365,6 +413,19 @@ func BenchmarkGnomeSort(b *testing.B) {
 		b.StartTimer()
 
 		GnomeSort(ByIntValue(list))
+	}
+	return
+}
+
+func BenchmarkCycleSort(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		b.StopTimer()
+		for i := range list {
+			list[i] = prng.Int()
+		}
+		b.StartTimer()
+
+		CycleSort(ByIntValue(list), get, compare, swap)
 	}
 	return
 }

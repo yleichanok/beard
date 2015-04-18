@@ -14,20 +14,21 @@ Default array size for benchmarking purposes is set to 100000 elements. It can b
 
     go test -bench=.
 
-Results for an array of 100,000 integer elements:
+Results for an array of 10,000 integer elements:
 
-| Name              | Iterations |           ns/op |
-| :---------------- | ---------: | --------------: |
-| Quick sort        |        100 |        24046186 |
-| Go native sort    |        100 |        26385257 |
-| Heap sort         |         50 |        39348495 |
-| Comb sort         |         50 |        38874305 |
-| Shell sort        |         20 |        75871708 |
-| Merge sort        |         10 |       151857156 |
-| Insertion sort    |          1 |     26730997119 |
-| Selection sort    |          1 |     33175800770 |
-| Gnome sort        |          1 |     41226572490 |
-| Odd-even sort     |          1 |     49186325185 |
-| Cocktail sort     |          1 |     50297429161 |
-| Bubble sort       |          1 |     84889191452 |
-| Stooge sort       |          - |               - |
+| Name              | Iterations |           ns/op |                              |
+| :---------------- | ---------: | --------------: | :--------------------------- |
+| Quick sort        |       1000 |         2007156 |                              |
+| Go native sort    |       1000 |         2014763 |                              |
+| Comb sort         |        500 |         3239221 |                              |
+| Heap sort         |        500 |         3061923 |                              |
+| Shell sort        |        500 |         3102759 |                              |
+| Merge sort        |        200 |         9318359 | Type casting used.           |
+| Insertion sort    |          5 |       281339567 |                              |
+| Selection sort    |          5 |       336679882 |                              |
+| Gnome sort        |          5 |       426937305 |                              |
+| Cocktail sort     |          2 |       530186142 |                              |
+| Odd-even sort     |          2 |       512593399 |                              |
+| Bubble sort       |          2 |       860656513 |                              |
+| Cycle sort        |          1 |      6266636497 | Type casting used.           |
+| Stooge sort       |          - |               - | Believe me, it's slow :)     |
