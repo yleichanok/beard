@@ -1,6 +1,7 @@
 package sort
 
 import (
+	"fmt"
 	"math/rand"
 	"reflect"
 	"sort"
@@ -86,6 +87,8 @@ func TestBubbleSort(t *testing.T) {
 		return
 	}
 
+	fmt.Println("Bubble sort - OK")
+
 	return
 }
 
@@ -99,26 +102,11 @@ func TestCocktailSort(t *testing.T) {
 
 	CocktailSort(ByIntValue(arr))
 	if reflect.DeepEqual(arr, arrSorted) == false {
-		t.Error("Bubble sort failed for %v", arr)
+		t.Error("Cocktail sort failed for %v", arr)
 		return
 	}
 
-	return
-}
-
-func TestOddEvenSort(t *testing.T) {
-	arr := []int{
-		2, 5, 8, 1, 9, 3, 6, 9, 1, 3, 9, 4, 7, 1, 0, 5, -1, -3, 1, -5,
-	}
-	arrSorted := []int{
-		-5, -3, -1, 0, 1, 1, 1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 9, 9,
-	}
-
-	OddEvenSort(ByIntValue(arr))
-	if reflect.DeepEqual(arr, arrSorted) == false {
-		t.Error("Bubble sort failed for %v", arr)
-		return
-	}
+	fmt.Println("Cocktail sort - OK")
 
 	return
 }
@@ -133,14 +121,16 @@ func TestCombSort(t *testing.T) {
 
 	CombSort(ByIntValue(arr))
 	if reflect.DeepEqual(arr, arrSorted) == false {
-		t.Error("Bubble sort failed for %v", arr)
+		t.Error("Comb sort failed for %v", arr)
 		return
 	}
+
+	fmt.Println("Comb sort - OK")
 
 	return
 }
 
-func TestMergeSort(t *testing.T) {
+func TestCycleSort(t *testing.T) {
 	arr := []int{
 		2, 5, 8, 1, 9, 3, 6, 9, 1, 3, 9, 4, 7, 1, 0, 5, -1, -3, 1, -5,
 	}
@@ -148,30 +138,13 @@ func TestMergeSort(t *testing.T) {
 		-5, -3, -1, 0, 1, 1, 1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 9, 9,
 	}
 
-	tmp := make([]int, len(arr))
-
-	MergeSort(ByIntValue(arr), ByIntValue(tmp), copy)
+	CycleSort(ByIntValue(arr), get, compare, swap)
 	if reflect.DeepEqual(arr, arrSorted) == false {
-		t.Error("Quick sort failed for %v", arr)
+		t.Error("Cycle sort failed for %v", arr)
 		return
 	}
 
-	return
-}
-
-func TestQuickSort(t *testing.T) {
-	arr := []int{
-		2, 5, 8, 1, 9, 3, 6, 9, 1, 3, 9, 4, 7, 1, 0, 5, -1, -3, 1, -5,
-	}
-	arrSorted := []int{
-		-5, -3, -1, 0, 1, 1, 1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 9, 9,
-	}
-
-	QuickSort(ByIntValue(arr))
-	if reflect.DeepEqual(arr, arrSorted) == false {
-		t.Error("Quick sort failed for %v", arr)
-		return
-	}
+	fmt.Println("Cycle sort - OK")
 
 	return
 }
@@ -190,6 +163,8 @@ func TestHeapSort(t *testing.T) {
 		return
 	}
 
+	fmt.Println("Quick sort - OK")
+
 	return
 }
 
@@ -203,43 +178,11 @@ func TestGnomeSort(t *testing.T) {
 
 	GnomeSort(ByIntValue(arr))
 	if reflect.DeepEqual(arr, arrSorted) == false {
-		t.Error("Quick sort failed for %v", arr)
+		t.Error("Gnome sort failed for %v", arr)
 		return
 	}
 
-	return
-}
-
-func TestCycleSort(t *testing.T) {
-	arr := []int{
-		2, 5, 8, 1, 9, 3, 6, 9, 1, 3, 9, 4, 7, 1, 0, 5, -1, -3, 1, -5,
-	}
-	arrSorted := []int{
-		-5, -3, -1, 0, 1, 1, 1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 9, 9,
-	}
-
-	CycleSort(ByIntValue(arr), get, compare, swap)
-	if reflect.DeepEqual(arr, arrSorted) == false {
-		t.Error("Quick sort failed for %v", arr)
-		return
-	}
-
-	return
-}
-
-func TestStoogeSort(t *testing.T) {
-	arr := []int{
-		2, 5, 8, 1, 9, 3, 6, 9, 1, 3, 9, 4, 7, 1, 0, 5, -1, -3, 1, -5,
-	}
-	arrSorted := []int{
-		-5, -3, -1, 0, 1, 1, 1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 9, 9,
-	}
-
-	StoogeSort(ByIntValue(arr))
-	if reflect.DeepEqual(arr, arrSorted) == false {
-		t.Error("Quick sort failed for %v", arr)
-		return
-	}
+	fmt.Println("Gnome sort - OK")
 
 	return
 }
@@ -254,14 +197,16 @@ func TestInsertionSort(t *testing.T) {
 
 	InsertionSort(ByIntValue(arr))
 	if reflect.DeepEqual(arr, arrSorted) == false {
-		t.Error("Quick sort failed for %v", arr)
+		t.Error("Insertion sort failed for %v", arr)
 		return
 	}
+
+	fmt.Println("Insertion sort - OK")
 
 	return
 }
 
-func TestShellSort(t *testing.T) {
+func TestMergeSort(t *testing.T) {
 	arr := []int{
 		2, 5, 8, 1, 9, 3, 6, 9, 1, 3, 9, 4, 7, 1, 0, 5, -1, -3, 1, -5,
 	}
@@ -269,11 +214,53 @@ func TestShellSort(t *testing.T) {
 		-5, -3, -1, 0, 1, 1, 1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 9, 9,
 	}
 
-	ShellSort(ByIntValue(arr))
+	tmp := make([]int, len(arr))
+
+	MergeSort(ByIntValue(arr), ByIntValue(tmp), copy)
+	if reflect.DeepEqual(arr, arrSorted) == false {
+		t.Error("Merge sort failed for %v", arr)
+		return
+	}
+
+	fmt.Println("Merge sort - OK")
+
+	return
+}
+
+func TestOddEvenSort(t *testing.T) {
+	arr := []int{
+		2, 5, 8, 1, 9, 3, 6, 9, 1, 3, 9, 4, 7, 1, 0, 5, -1, -3, 1, -5,
+	}
+	arrSorted := []int{
+		-5, -3, -1, 0, 1, 1, 1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 9, 9,
+	}
+
+	OddEvenSort(ByIntValue(arr))
+	if reflect.DeepEqual(arr, arrSorted) == false {
+		t.Error("Odd-even sort failed for %v", arr)
+		return
+	}
+
+	fmt.Println("Odd-even sort - OK")
+
+	return
+}
+
+func TestQuickSort(t *testing.T) {
+	arr := []int{
+		2, 5, 8, 1, 9, 3, 6, 9, 1, 3, 9, 4, 7, 1, 0, 5, -1, -3, 1, -5,
+	}
+	arrSorted := []int{
+		-5, -3, -1, 0, 1, 1, 1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 9, 9,
+	}
+
+	QuickSort(ByIntValue(arr))
 	if reflect.DeepEqual(arr, arrSorted) == false {
 		t.Error("Quick sort failed for %v", arr)
 		return
 	}
+
+	fmt.Println("Quick sort - OK")
 
 	return
 }
@@ -288,9 +275,49 @@ func TestSelectionSort(t *testing.T) {
 
 	SelectionSort(ByIntValue(arr))
 	if reflect.DeepEqual(arr, arrSorted) == false {
-		t.Error("Quick sort failed for %v", arr)
+		t.Error("Selection sort failed for %v", arr)
 		return
 	}
+
+	fmt.Println("Selection sort - OK")
+
+	return
+}
+
+func TestShellSort(t *testing.T) {
+	arr := []int{
+		2, 5, 8, 1, 9, 3, 6, 9, 1, 3, 9, 4, 7, 1, 0, 5, -1, -3, 1, -5,
+	}
+	arrSorted := []int{
+		-5, -3, -1, 0, 1, 1, 1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 9, 9,
+	}
+
+	ShellSort(ByIntValue(arr))
+	if reflect.DeepEqual(arr, arrSorted) == false {
+		t.Error("Shell sort failed for %v", arr)
+		return
+	}
+
+	fmt.Println("Shell sort - OK")
+
+	return
+}
+
+func TestStoogeSort(t *testing.T) {
+	arr := []int{
+		2, 5, 8, 1, 9, 3, 6, 9, 1, 3, 9, 4, 7, 1, 0, 5, -1, -3, 1, -5,
+	}
+	arrSorted := []int{
+		-5, -3, -1, 0, 1, 1, 1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 9, 9,
+	}
+
+	StoogeSort(ByIntValue(arr))
+	if reflect.DeepEqual(arr, arrSorted) == false {
+		t.Error("Stooge sort failed for %v", arr)
+		return
+	}
+
+	fmt.Println("Stooge sort - OK")
 
 	return
 }
@@ -298,19 +325,6 @@ func TestSelectionSort(t *testing.T) {
 // ----------------------------------------------------------------------------
 // Benchmarking...
 // ----------------------------------------------------------------------------
-
-func BenchmarkNativeSort(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		b.StopTimer()
-		for i := range list {
-			list[i] = prng.Int()
-		}
-		b.StartTimer()
-
-		sort.Ints(list)
-	}
-	return
-}
 
 func BenchmarkBubbleSort(b *testing.B) {
 	for i := 0; i < b.N; i++ {
@@ -338,19 +352,6 @@ func BenchmarkCocktailSort(b *testing.B) {
 	return
 }
 
-func BenchmarkOddEvenSort(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		b.StopTimer()
-		for i := range list {
-			list[i] = prng.Int()
-		}
-		b.StartTimer()
-
-		OddEvenSort(ByIntValue(list))
-	}
-	return
-}
-
 func BenchmarkCombSort(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
@@ -364,7 +365,7 @@ func BenchmarkCombSort(b *testing.B) {
 	return
 }
 
-func BenchmarkMergeSort(b *testing.B) {
+func BenchmarkCycleSort(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
 		for i := range list {
@@ -372,21 +373,7 @@ func BenchmarkMergeSort(b *testing.B) {
 		}
 		b.StartTimer()
 
-		tmp := make([]int, len(list))
-		MergeSort(ByIntValue(list), ByIntValue(tmp), copy)
-	}
-	return
-}
-
-func BenchmarkQuickSort(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		b.StopTimer()
-		for i := range list {
-			list[i] = prng.Int()
-		}
-		b.StartTimer()
-
-		QuickSort(ByIntValue(list))
+		CycleSort(ByIntValue(list), get, compare, swap)
 	}
 	return
 }
@@ -417,19 +404,6 @@ func BenchmarkGnomeSort(b *testing.B) {
 	return
 }
 
-func BenchmarkCycleSort(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		b.StopTimer()
-		for i := range list {
-			list[i] = prng.Int()
-		}
-		b.StartTimer()
-
-		CycleSort(ByIntValue(list), get, compare, swap)
-	}
-	return
-}
-
 func BenchmarkInsertionSort(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
@@ -443,7 +417,7 @@ func BenchmarkInsertionSort(b *testing.B) {
 	return
 }
 
-func BenchmarkShellSort(b *testing.B) {
+func BenchmarkMergeSort(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
 		for i := range list {
@@ -451,7 +425,47 @@ func BenchmarkShellSort(b *testing.B) {
 		}
 		b.StartTimer()
 
-		ShellSort(ByIntValue(list))
+		tmp := make([]int, len(list))
+		MergeSort(ByIntValue(list), ByIntValue(tmp), copy)
+	}
+	return
+}
+
+func BenchmarkNativeSort(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		b.StopTimer()
+		for i := range list {
+			list[i] = prng.Int()
+		}
+		b.StartTimer()
+
+		sort.Ints(list)
+	}
+	return
+}
+
+func BenchmarkOddEvenSort(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		b.StopTimer()
+		for i := range list {
+			list[i] = prng.Int()
+		}
+		b.StartTimer()
+
+		OddEvenSort(ByIntValue(list))
+	}
+	return
+}
+
+func BenchmarkQuickSort(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		b.StopTimer()
+		for i := range list {
+			list[i] = prng.Int()
+		}
+		b.StartTimer()
+
+		QuickSort(ByIntValue(list))
 	}
 	return
 }
@@ -465,6 +479,19 @@ func BenchmarkSelectionSort(b *testing.B) {
 		b.StartTimer()
 
 		SelectionSort(ByIntValue(list))
+	}
+	return
+}
+
+func BenchmarkShellSort(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		b.StopTimer()
+		for i := range list {
+			list[i] = prng.Int()
+		}
+		b.StartTimer()
+
+		ShellSort(ByIntValue(list))
 	}
 	return
 }
